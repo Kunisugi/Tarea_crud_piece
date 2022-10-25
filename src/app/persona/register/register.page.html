@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align:center;">Api Piece</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button fill="outline" [routerLink]="['']" size="small" color="tertiary"><ion-icon name="arrow-back-outline"></ion-icon>
+  </ion-button>
+  <ion-card>
+    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4153eaf9-97b2-4c99-be24-1129b1af0e7b/df4mgfb-476cf6ee-d982-47ae-a5bc-2d286089b532.png/v1/fill/w_1280,h_452,strp/one_piece_logo_png_by_foxboxnostalgic101_df4mgfb-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDUyIiwicGF0aCI6IlwvZlwvNDE1M2VhZjktOTdiMi00Yzk5LWJlMjQtMTEyOWIxYWYwZTdiXC9kZjRtZ2ZiLTQ3NmNmNmVlLWQ5ODItNDdhZS1hNWJjLTJkMjg2MDg5YjUzMi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.J4Ax-YsBuXR2kokIxHv1mpdOHQoqa0moUDoAIr_UoeQ" alt="">
+      <ion-card-header>
+        <ion-card-title style="text-align:center ;"> </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    <h3 style="text-align:center;">Registrate!</h3>
+  <form [formGroup]="formulario" (ngSubmit)="register()">
+    <ion-item>
+    <ion-label position="floating" style="text-align:center;">Usuario </ion-label>
+    <ion-input type="text" formControlName="user"></ion-input>
+    </ion-item>
+    <p *ngIf="!formulario.get('user').valid && formulario.get('user').errors.required && formulario.get('user').touched" style="color:red;">*Campo requerido </p>
+    <p *ngIf="!formulario.get('user').valid && formulario.get('user').errors.minlength && formulario.get('user').touched" style="color:red;">*Minimo 3 caracteres </p>
+    <p *ngIf="!formulario.get('user').valid && formulario.get('user').errors.maxlength && formulario.get('user').touched" style="color:red;">*Maximo 20 caracteres </p>
+    <p *ngIf="!formulario.get('user').valid && formulario.get('user').errors.pattern && formulario.get('user').touched" style="color:red;">*Sin caracteres especiales </p>
+
+    <ion-item>
+    <ion-label position="floating" style="text-align:center;"> Contraseña </ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <p *ngIf="!formulario.get('password').valid && formulario.get('password').errors.required && formulario.get('password').touched" style="color:red;">*Campo requerido </p>
+    <p *ngIf="!formulario.get('password').valid && formulario.get('password').errors.minlength && formulario.get('password').touched" style="color:red;">*Minimo 3 caracteres </p>
+    <p *ngIf="!formulario.get('password').valid && formulario.get('password').errors.maxlength && formulario.get('password').touched" style="color:red;">*Maximo 20 caracteres </p>
+    <br>
+    <ion-button fill="outline" color="warning" type="sumbit" expand="block" [disabled]="formulario.invalid">Registrarse</ion-button>
+
+  </form>
+
+</ion-content>

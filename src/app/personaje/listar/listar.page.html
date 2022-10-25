@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align:center ;">{{persona.user}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button fill="outline" size="small" (click)="logout()" color="warning"><ion-icon name="log-out-outline"></ion-icon> </ion-button>
+  <ion-button  expand="block"  color="tertiary" fill="outline" [routerLink]="['agregar']">Añadir personaje</ion-button>
+  <ion-card *ngFor="let personaje of listaPersonajes" [routerLink]="['modificar',personaje.nombre]" [queryParams]="{id:personaje.id}">
+    <img [src]="personaje.img" alt="" loading="lazy">
+    <ion-card-header>
+      <ion-card-title>{{personaje.nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Tripulacion : {{personaje.tripulacion}}</p>
+      <p>Edad : {{personaje.edad}}</p>
+      <p>Rol : {{personaje.rol}}</p>
+      <p>Recompensa : {{personaje.recompensa}}</p>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="cargarMasDatos()">
+    <ion-infinite-scroll-content loadingText="Cargando más personaje..">
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>

@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align:center;">Añadir</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content><br>
+  <ion-button fill="outline" [routerLink]="['/home']" size="small" color="warning"><ion-icon name="arrow-back-outline"></ion-icon>
+  </ion-button>
+  <form [formGroup]="formulario" (ngSubmit)="guardarDatos()">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-item>
+            <ion-label position="floating">Nombre: </ion-label>
+            <ion-input type="text" formControlName="nombre" ></ion-input>
+          </ion-item>
+          <p *ngIf="!formulario.get('nombre').valid && formulario.get('nombre').errors.required && formulario.get('nombre').touched" style="color:red;">*Campo requerido </p>
+          <p *ngIf="!formulario.get('nombre').valid && formulario.get('nombre').errors.pattern && formulario.get('nombre').touched" style="color:red;">*Sin numeros <br>*Sin caracteres especiales </p>
+          <p *ngIf="!formulario.get('nombre').valid && formulario.get('nombre').errors.minlength && formulario.get('nombre').touched" style="color:red;">*Minimo 3 caracteres </p>
+          <p *ngIf="!formulario.get('nombre').valid && formulario.get('nombre').errors.maxlength && formulario.get('nombre').touched" style="color:red;">*Maximo 20 caracteres </p>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Tripulacion: </ion-label>
+          <ion-input type="text" formControlName="tripulacion" ></ion-input>
+        </ion-item>
+        <p *ngIf="!formulario.get('tripulacion').valid && formulario.get('tripulacion').errors.required && formulario.get('tripulacion').touched" style="color:red;">*Campo requerido </p>
+        <p *ngIf="!formulario.get('tripulacion').valid && formulario.get('tripulacion').errors.pattern && formulario.get('tripulacion').touched" style="color:red;">*Sin numeros <br>*Sin caracteres especiales </p>
+        <p *ngIf="!formulario.get('tripulacion').valid && formulario.get('tripulacion').errors.minlength && formulario.get('tripulacion').touched" style="color:red;">*Minimo 3 caracteres </p>
+        <p *ngIf="!formulario.get('tripulacion').valid && formulario.get('tripulacion').errors.maxlength && formulario.get('tripulacion').touched" style="color:red;">*Maximo 20 caracteres </p>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+        <ion-label for="" position="floating">Edad: </ion-label>
+        <ion-input type="number" formControlName="edad"></ion-input>
+        </ion-item>
+        <p *ngIf="!formulario.get('edad').valid && formulario.get('edad').errors.required && formulario.get('edad').touched" style="color:red;">*Campo requerido</p>
+        <p *ngIf="!formulario.get('edad').valid && formulario.get('edad').errors.min && formulario.get('edad').touched" style="color:red;">*Edad minima 1 año </p>
+        <p *ngIf="!formulario.get('edad').valid && formulario.get('edad').errors.max && formulario.get('edad').touched" style="color:red;">*Edad maxima 200 </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+        <ion-label for="" position="floating">Rol: </ion-label>
+        <ion-input type="text" formControlName="rol" ></ion-input>
+        </ion-item>
+          <p *ngIf="!formulario.get('rol').valid && formulario.get('rol').errors.required && formulario.get('rol').touched" style="color:red;">*Campo requerido</p>
+          <p *ngIf="!formulario.get('rol').valid && formulario.get('rol').errors.pattern && formulario.get('rol').touched" style="color:red;">*Sin numeros <br>*Sin caracteres especiales </p>
+          <p *ngIf="!formulario.get('rol').valid && formulario.get('rol').errors.minlength && formulario.get('rol').touched" style="color:red;">*Minimo 3 caracteres </p>
+          <p *ngIf="!formulario.get('rol').valid && formulario.get('rol').errors.maxlength && formulario.get('rol').touched" style="color:red;">*Maximo 40 caracteres </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+        <ion-label position="floating">Imagen: </ion-label><br>
+        <ion-input type="file" formControlName="img" (change)="leerArchivo($event)"></ion-input>
+        <p *ngIf="!formulario.get('img').valid && formulario.get('img').errors.required && formulario.get('img').touched" style="color:red;">*Campo requerido</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+        <ion-label position="floating">Recompensa: </ion-label>
+        <ion-input type="text" formControlName="recompensa" ></ion-input>
+      </ion-item>
+        <p *ngIf="!formulario.get('recompensa').valid && formulario.get('recompensa').errors.required && formulario.get('recompensa').touched" style="color:red;">*Campo requerido</p>
+        <p *ngIf="!formulario.get('recompensa').valid && formulario.get('recompensa').errors.pattern && formulario.get('recompensa').touched" style="color:red;">*Sin letras <br>*Sin caracteres especiales</p>
+
+      </ion-col>
+    </ion-row>
+
+    <br>
+    <ion-button  [disabled]="formulario.invalid" type="sumbit"  color="tertiary" expand="block"  fill="outline">Añadir</ion-button>
+  </ion-grid>
+  </form>
+
+  </ion-content>
